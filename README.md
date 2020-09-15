@@ -78,7 +78,7 @@ It gets the game by its name
 from twitch.twitch import Twitch
 
 async with Twitch("client_id","client_secret") as example_name:
-    await example_name.game('game name')
+    await example_name.game('game ID')
 ```
 This can be done for multiple games too
 ```
