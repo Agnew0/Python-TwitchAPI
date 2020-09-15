@@ -144,13 +144,13 @@ class TwitchApp:
     async def game(self, games: Union[list, str]):
         """
         Searches after one or more games on Twitch
-        :param games: Name/s of the game/s
+        :param games: ID/s of the game/s
         :return:
         """
         games = games if type(games) is list else [games]
         response_games = []
         for i in range(int(len(games) / 100) + 1):
-            query = "&".join(f"name={game}" for game in games[100 * i:100 * (i + 1)])
+            query = "&".join(f"id={game}" for game in games[100 * i:100 * (i + 1)])
             url = f'https://api.twitch.tv/helix/games?{query}'
             part_games = await self.session.get(url, headers=self.header)
             async with part_games:
